@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>JS Tabs</title>
+
+  </head>
+
+  <body>
+
+    <div class="tabs-wrapper">
+
+      <div role="tablist">
+        <button role="tab" aria-selected="true" id="tab-1">
+            Tab 1
+        </button>
+        <button role="tab" aria-selected="false" id="tab-2">
+            Tab 2
+        </button>
+        <button role="tab" aria-selected="false" id="tab-3">
+            Tab 3
+        </button>
+      </div>
+
+      <div role="tabpanel" aria-labelledby="tab-1">
+        <p>1 - Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
+      </div>
+
+      <div role="tabpanel" aria-labelledby="tab-2" hidden>
+        <p>2 - Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
+      </div>
+
+      <div role="tabpanel" aria-labelledby="tab-3" hidden>
+        <p>3 - Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
+      </div>
+
+    </div>
+
+    <style>
+    </style>
+
+    <script>
+        const tabs = document.querySelector('.tabs-wrapper');
+        const tabButtons = tabs.querySelectorAll('[role="tab"]');
+        const tabPanels = Array.from(tabs.querySelectorAll('[role="tabpanel"]'));
+
+        function handleTabClick(event) {
+        // hide all tab panels
+        tabPanels.forEach(panel => {
+            panel.hidden = true;
+        });
+        // mark all tabs as unselected
+        tabButtons.forEach(tab => {
+            // tab.ariaSelected = false;
+            tab.setAttribute('aria-selected', false);
+        });
+        // mark the clicked tab as selected
+        event.currentTarget.setAttribute('aria-selected', true);
+        // find the associated tabPanel and show it!
+        const { id } = event.currentTarget;
+
+        console.log(tabPanels);
+        const tabPanel = tabPanels.find(
+            panel => panel.getAttribute('aria-labelledby') === id
+        );
+        tabPanel.hidden = false;
+        }
+
+        tabButtons.forEach(button => button.addEventListener('click', handleTabClick));
+
+    </script>
+
+  </body>
+
+</html>
