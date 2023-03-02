@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>JS Accordion</title>
+
+</head>
+
+<body>
+
+    <div class="accordion">
+
+        <div class="container active">
+            <div class="question">
+                Question 1
+            </div>
+            <div class="content">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="question">
+                Question 2
+            </div>
+            <div class="content">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="question">
+                Question 3
+            </div>
+            <div class="content">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="question">
+                Question 4
+            </div>
+            <div class="content">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="question">
+                Question 5
+            </div>
+            <div class="content">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+            </div>
+        </div>
+
+    </div>
+
+    <style>
+
+        .accordion {
+            padding: 20px;
+            max-width: 800px;
+        }
+
+        .accordion .container {
+            position: relative;
+            padding: 10px 10px;
+            border-bottom: 1px solid black;
+        }
+
+        .accordion .question {
+            position: relative;
+            padding: 10px 0;
+            font-size: 30px;
+            color: black;
+            cursor: pointer;
+        }
+
+        .accordion .question::before {
+            content: '+';
+            color: black;
+            position: absolute;
+            top: 50%;
+            right: -5px;
+            font-size: 30px;
+            transform: translateY(-50%);
+        }
+
+        .accordion .content {
+            position: relative;
+            background: white;
+            height: 0;
+            font-size: 20px;
+            text-align: justify;
+            overflow: hidden;
+            transition: 0.5s;
+            padding-right: 50px;
+        }
+
+        .accordion .container.active .content {
+            height: 80px;
+        }
+
+        .accordion .container.active .question::before {
+            content: '-';
+            font-size: 40px;
+        }
+
+    </style>
+
+    <script>
+        
+        const accordion = document.querySelector('.accordion');
+        const container = accordion.querySelectorAll('.container');
+        const questions = accordion.querySelectorAll('.question');
+
+        function toggleAccordion() {
+            const thisItem = this.parentNode;
+        
+            container.forEach(item => {
+                if (thisItem == item) {
+                    thisItem.classList.toggle('active');
+                    return;
+                }
+            
+                item.classList.remove('active');
+            });
+        }
+
+        questions.forEach(question => question.addEventListener('click', toggleAccordion));
+
+    </script>
+
+</body>
+
+</html>
