@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>JS Modal</title>
+
+</head>
+
+<body>
+
+    <div class="page-wrapper">
+
+        <button class="chat-button">Chat!</button>    
+        
+        <div class="chat-box">
+            <div class="chat-line">
+                <div class="avatar">
+                    <img src="https://picsum.photos/id/64/200/300" alt="avatar">
+                </div>
+                <div class="message">
+                    Hi, how can I help you today?
+                </div>
+            </div>
+            <div class="close-btn">X</div>
+        </div>
+
+    </div>
+
+    <style>
+
+        .page-wrapper {
+            height: 400vh;
+        }
+
+        .chat-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 100%;
+            background: blue;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            margin: 20px;
+        }
+
+        .chat-box {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            z-index: 10;
+            margin: 20px;
+            width: 300px;
+            height: 400px;
+            background: #e2e2e2;
+            border-radius: 30px;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+        }
+
+        .chat-box .chat-line {
+            display: flex;
+            align-items: center;
+        }
+
+        .chat-box .avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 100%;
+            overflow: hidden;
+            display: inline-block;
+            position: relative;
+        }
+
+        .chat-box .avatar img {
+            position: absolute;
+            width: 100%;
+        }
+
+        .chat-box .chat-line .message {
+            padding-left: 10px;
+        }
+
+        .chat-box.active {
+            opacity: 100%;
+            pointer-events: all;
+        }
+
+        .close-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 100%;
+            background: black;
+            color: white;
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+    </style>
+
+    <script>
+        
+        window.onscroll = function() {
+            chatVisible()
+        };
+
+        const halfWay = screen.height / 2
+        var chatBtn = document.querySelector(".chat-button");
+        var chatBox = document.querySelector(".chat-box");
+        var closeBtn = document.querySelector(".close-btn");
+
+        function openChat() {
+            chatBox.classList.toggle("active");
+        }
+
+        function closeChat() {
+            chatBox.classList.remove('active');
+        }
+
+        function chatVisible() {
+            if (document.documentElement.scrollTop > halfWay) {
+                chatBox.classList.add("active");
+            }
+        }
+
+        chatBtn.addEventListener("click", openChat);
+        closeBtn.addEventListener("click", closeChat);
+
+    </script>
+
+</body>
+
+</html>
