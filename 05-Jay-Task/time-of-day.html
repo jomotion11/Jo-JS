@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Time of day</title>
+
+</head>
+
+<body>
+
+    <div id="page-background">
+    </div>
+
+    <style>
+
+        #page-background {
+            text-align: center;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+
+        .green {
+            background-color: green;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .black {
+            background-color: black;
+        }
+
+    </style>
+
+    <script>
+        
+        const date = new Date();
+        var hour = date.getHours();
+
+        const dateOption = {
+            day: 'numeric',
+            month: 'short',
+            year: 'numeric'
+        };
+
+        const timeOption = {
+            hour12: true,
+            hour: 'numeric',
+        };
+
+        const dateTime = {
+            ...timeOption, ... dateOption,
+        };
+
+        document.getElementById("page-background").innerHTML = date.toLocaleString('en-UK', dateTime);
+
+        if (hour >= 6 && hour <= 12) {
+            document.body.classList.add("yellow")
+        }
+        else if (hour >= 13 && hour <= 18) {
+            document.body.classList.add("green")
+        }
+        else if (hour >= 19 && hour <= 24) {
+            document.body.classList.add("red")
+        }
+        else if (hour >= 1 && hour <= 5) {
+            document.body.classList.add("black")
+        }
+
+    </script>
+
+</body>
+
+</html>
