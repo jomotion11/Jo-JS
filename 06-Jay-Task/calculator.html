@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Calculator</title>
+
+</head>
+
+<body>
+
+    <h2>Add Numbers</h2>
+
+    <form id="add-form">
+        <input type="number" id="add-a" name="a" required>
+       +
+        <input type="number" id="add-b" name="b" required>
+        <button type="submit">=</button>
+    </form>
+    
+    <div id="add-result"></div>
+        
+    <h2>Subtract Numbers</h2>
+    <form id="subtract-form">
+        <input type="number" id="subtract-a" name="a" required>
+        -
+        <input type="number" id="subtract-b" name="b" required>
+        <button type="submit">=</button>
+    </form>
+
+    <div id="subtract-result"></div>
+
+    <h2>Multipy Numbers</h2>
+    <form id="multipy-form">
+        <input type="number" id="multipy-a" name="a" required>
+        x
+        <input type="number" id="multipy-b" name="b" required>
+        <button type="submit">=</button>
+    </form>
+
+    <div id="multipy-result"></div>
+        
+    <h2>Divide Numbers</h2>
+    <form id="divide-form">
+        <input type="number" id="divide-a" name="a" required>
+        ÷
+        <input type="number" id="divide-b" name="b" required>
+        <button type="submit">=</button>
+    </form>
+
+    <div id="divide-result"></div>
+
+    <style>
+
+    </style>
+
+    <script>
+        
+        document.getElementById("add-form").addEventListener("submit", performaAdd);
+        document.getElementById("subtract-form").addEventListener("submit", performSubtract);
+        document.getElementById("multipy-form").addEventListener("submit", performMultipy);
+        document.getElementById("divide-form").addEventListener("submit", performDivide);
+        
+        function performaAdd(event) {
+            event.preventDefault();
+            const a = parseFloat(document.getElementById("add-a").value);
+            const b = parseFloat(document.getElementById("add-b").value);
+            const result = a + b;
+            document.getElementById("add-result").textContent = result;
+        }
+        
+        function performSubtract(event) {
+            event.preventDefault();
+            const a = parseFloat(document.getElementById("subtract-a").value);
+            const b = parseFloat(document.getElementById("subtract-b").value);
+            const result = a - b;
+            document.getElementById("subtract-result").textContent = result;
+        }
+
+        function performMultipy(event) {
+            event.preventDefault();
+            const a = parseFloat(document.getElementById("multipy-a").value);
+            const b = parseFloat(document.getElementById("multipy-b").value);
+            const result = a * b;
+            document.getElementById("multipy-result").textContent = result;
+        }
+
+        function performDivide(event) {
+            event.preventDefault();
+            const a = parseFloat(document.getElementById("divide-a").value);
+            const b = parseFloat(document.getElementById("divide-b").value);
+            const result = a / b;
+            document.getElementById("divide-result").textContent = result;
+        }
+
+    </script>
+
+</body>
+
+</html>
