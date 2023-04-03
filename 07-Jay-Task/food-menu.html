@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Food Menu</title>
+
+</head>
+
+<body>
+    
+    <script>
+        
+        const menuItems = [
+            { title: "Spaghetti Bolognese", description: "Classic Italian pasta dish with tomato sauce and ground beef" },
+            { title: "Chicken Tikka Masala", description: "Creamy Indian curry with grilled chicken and spices" },
+            { title: "Grilled Salmon", description: "Fresh salmon fillet with garlic butter and lemon" },
+            { title: "Steak Frites", description: "Grilled steak with fries and garlic aioli" },
+            { title: "Margherita Pizza", description: "Classic Italian pizza with tomato sauce, mozzarella, and basil" },
+            { title: "Caesar Salad", description: "Crisp romaine lettuce with parmesan cheese, croutons, and caesar dressing" },
+            { title: "Beef Burger", description: "Juicy beef patty with cheese, lettuce, tomato, and pickles" },
+            { title: "Fish and Chips", description: "Beer-battered fish with fries and tartar sauce" },
+            { title: "Pad Thai", description: "Thai stir-fried noodles with shrimp, tofu, peanuts, and tamarind sauce" },
+            { title: "Miso Soup", description: "Japanese soup with tofu, seaweed, and miso paste" },
+        ];
+
+        const menuList = document.createElement("ul");
+
+        for (let i = 0; i < menuItems.length; i++) {
+            const menuItem = menuItems[i];
+            const listItem = document.createElement("li");
+            const title = document.createElement("h3");
+            const description = document.createElement("p");
+            title.textContent = menuItem.title;
+            description.textContent = menuItem.description;
+            listItem.appendChild(title);
+            listItem.appendChild(description);
+            menuList.appendChild(listItem);
+        }
+
+        document.body.appendChild(menuList);
+
+        //Also output the total amount of items in the array in this format “X items in the menu”
+        const numItems = menuItems.length;
+
+        const menuHeader = document.createElement("h2");
+        menuHeader.textContent = `${numItems} items in the menu`;
+        document.body.prepend(menuHeader);
+
+    </script>
+
+</body>
+
+</html>
