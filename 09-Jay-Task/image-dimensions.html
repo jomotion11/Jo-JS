@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Image Dimensions</title>
+
+</head>
+
+<body>
+
+    <div id="container">
+
+        <div id="image-container">
+
+            <img id="image" src="https://source.unsplash.com/random">
+
+            <div class="dimensions">
+                Width: <span id="width"></span>px<br>
+                Height: <span id="height"></span>px<br>
+                Distance from left: <span id="left"></span>px<br>
+                Distance from top: <span id="top"></span>px
+            </div>
+
+        </div>
+
+    </div>
+
+    
+
+    <style>
+
+        body {
+            margin: 0;
+        }
+
+        #container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #image-container {
+            max-width: 35rem;
+            position: relative;
+        }
+        
+        #image-container #image {
+            width: 100%;
+            height: 100%;
+        }
+
+        .dimensions {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 1rem;
+            z-index: 10;
+            background-color: white;
+        }
+
+    </style>
+
+    <script>
+        
+        const image = document.getElementById("image");
+        const imageContainer = document.getElementById("image-container");
+
+        function updateImagePosition() {
+            const width = image.width;
+            const height = image.height;
+            const left = imageContainer.offsetLeft;
+            const top = imageContainer.offsetTop;
+            const widthSpan = document.getElementById("width");
+            const heightSpan = document.getElementById("height");
+            const leftSpan = document.getElementById("left");
+            const topSpan = document.getElementById("top");
+            widthSpan.textContent = width;
+            heightSpan.textContent = height;
+            leftSpan.textContent = left;
+            topSpan.textContent = top;
+        }
+
+        window.addEventListener("load", updateImagePosition);
+        window.addEventListener("resize", updateImagePosition);
+
+    </script>
+
+</body>
+
+</html>
