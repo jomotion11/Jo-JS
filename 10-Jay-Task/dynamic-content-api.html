@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Dynamic Content / API</title>
+
+</head>
+
+<body>
+
+    <h1>Shape Users</h1>
+    <ul id="shape-users"></ul>
+    
+    <style>
+
+    </style>
+
+    <script>
+
+        fetch('https://api.github.com/users/madebyshape')
+            .then(response => response.json())
+            .then(data => {
+                const userDetails = document.getElementById('shape-users');
+                for (const [key, value] of Object.entries(data)) {
+                    const li = document.createElement('li');
+                    li.textContent = `${key}: ${value}`;
+                    userDetails.appendChild(li);
+            }
+        })
+        .catch(error => console.error(error));
+
+    </script>
+
+</body>
+
+</html>
